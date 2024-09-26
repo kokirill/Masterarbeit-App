@@ -33,7 +33,7 @@ class RadarScreen extends StatelessWidget {
                       {'line': '281', 'destination': 'Hamburg Lattenkamp'},
                     ],
                     time: "5 Minuten - 10:02",
-                    onTap: () => onTap281HamburgULattenkamp(context),
+                    onTap: () => Void,
                   ),
                   const CustomDivider(),
                   BusDepartureSection(
@@ -49,7 +49,7 @@ class RadarScreen extends StatelessWidget {
                       {'line': '281 S', 'destination': 'Krupunder'},
                     ],
                     time: "12 Minuten - 10:09",
-                    onTap: () => Void,
+                    onTap: () => onTap281S(context),
                   ),
                 ],
               ),
@@ -137,7 +137,7 @@ class RadarScreen extends StatelessWidget {
     );
   }
 
-  onTap281HamburgULattenkamp(BuildContext context) {
+  onTap281S(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.busAusgewaehltScreen);
   }
 }

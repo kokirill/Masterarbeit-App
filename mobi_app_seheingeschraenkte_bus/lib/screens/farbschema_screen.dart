@@ -16,7 +16,7 @@ class FarbschemaScreen extends StatefulWidget {
 }
 
 class _FarbschemaScreenState extends State<FarbschemaScreen> {
-  bool isSelectedSwitchWB = false;
+  bool isSelectedSwitchWB = true;
 
   bool isSelctedSwitchBW = false;
 
@@ -57,7 +57,7 @@ class _FarbschemaScreenState extends State<FarbschemaScreen> {
       child: Column(
         children: [
           CustomSwitch(
-            label: "Weiß und Schwarz",
+            label: "Weißer Hintergrund und Schwarze Schrift",
             value: isSelectedSwitchWB,
             onChanged: (value) {
               setState(() {
@@ -69,7 +69,7 @@ class _FarbschemaScreenState extends State<FarbschemaScreen> {
           Divider(),
           SizedBox(height: 32.h),
           CustomSwitch(
-            label: "Schwarz und Weiß",
+            label: "Schwarzer Hintergrund und Weiße Schrift",
             value: isSelctedSwitchBW,
             onChanged: (value) {
               setState(() {
@@ -81,7 +81,7 @@ class _FarbschemaScreenState extends State<FarbschemaScreen> {
           Divider(),
           SizedBox(height: 32.h),
           CustomSwitch(
-            label: "Schwarz und Gelb",
+            label: "Schwarzer Hintergunrd und Gelbe Schrift",
             value: isSelctedSwitchBY,
             onChanged: (value) {
               setState(() {

@@ -69,19 +69,7 @@ class _VibrationsFeedbackScreenState extends State<VibrationsFeedbackScreen> {
       child: Column(
         children: [
           CustomSwitch(
-            label: "Vibrations Feedback",
-            value: switchVibtraion,
-            onChanged: (value) {
-              setState(() {
-                switchVibtraion = value;
-              });
-            },
-          ),
-          SizedBox(height: 32.h),
-          Divider(),
-          SizedBox(height: 32.h),
-          CustomSwitch(
-            label: "Nächste Bushaltestle",
+            label: "Nächste Bushaltestelle",
             value: switchNaechsteBushalte,
             onChanged: (value) {
               setState(() {

@@ -14,7 +14,7 @@ class SprachansagenScreen extends StatefulWidget {
 }
 
 class _SprachansagenScreenState extends State<SprachansagenScreen> {
-  bool isSelectedVorlesen = false;
+  bool isSelectedVorlesen = true;
   bool isSelectedAnkommenderBus = false;
 
   List<String> dropdownItemList = [
@@ -32,7 +32,7 @@ class _SprachansagenScreenState extends State<SprachansagenScreen> {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: const CustomAppBar(
-          titleText: 'Spracheinstellungen',
+          titleText: 'Sprachansagen',
         ),
         body: SizedBox(
           width: double.maxFinite,
@@ -61,7 +61,7 @@ class _SprachansagenScreenState extends State<SprachansagenScreen> {
       child: Column(
         children: [
           CustomSwitch(
-            label: "Vorlese Funktion",
+            label: "Talkback für App",
             value: isSelectedVorlesen,
             onChanged: (value) {
               setState(() {

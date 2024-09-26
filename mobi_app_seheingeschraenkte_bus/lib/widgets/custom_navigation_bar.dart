@@ -8,7 +8,7 @@ class CustomNavigationBar extends StatelessWidget {
   const CustomNavigationBar({
     Key? key,
     this.onZielortPressed,
-    this.onEinstellungPressed, // Function to handle Zielort button press
+    this.onEinstellungPressed,
   }) : super(key: key);
 
   @override
@@ -37,7 +37,7 @@ class CustomNavigationBar extends StatelessWidget {
             context,
             iconPath: ImageConstant.imgZielOrtKnopf, // Zielort icon
             label: 'Zielort',
-            onPressed: onZielortPressed, // Add the onPressed behavior here
+            onPressed: onZielortPressed,
           ),
           _buildNavButton(
             context,
@@ -55,11 +55,9 @@ class CustomNavigationBar extends StatelessWidget {
       required String label,
       Function()? onPressed}) {
     return GestureDetector(
-      onTap:
-          onPressed ?? () {}, // Use onPressed if provided, otherwise no action
+      onTap: onPressed ?? () {},
       child: Semantics(
-        label:
-            'Untere Navigationsleiste, $label ausgewählt', // Describes lower nav and button selected
+        label: 'Untere Navigationsleiste, $label ausgewählt',
         button: true,
         child: Column(
           mainAxisSize: MainAxisSize.min,
