@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobi_app_seheingeschraenkte_bus/widgets/custom_search_view.dart';
 import '../core/app_export.dart';
 
 class AppNavigationScreen extends StatelessWidget {

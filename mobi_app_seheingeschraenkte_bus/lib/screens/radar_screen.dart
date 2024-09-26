@@ -1,9 +1,12 @@
 import 'dart:ffi';
 import 'package:flutter/material.dart';
+import '../widgets/bus_departure_section.dart';
 import '../widgets/common_widgets.dart';
 import '../core/app_export.dart';
+import '../widgets/custom_display.dart';
 import '../widgets/custom_navigation_bar.dart';
 
+// ignore_for_file: must_be_immutable
 class RadarScreen extends StatelessWidget {
   RadarScreen({Key? key}) : super(key: key);
 
@@ -26,19 +29,25 @@ class RadarScreen extends StatelessWidget {
                   _buildRadarColumn(context),
                   SizedBox(height: 22.h),
                   BusDepartureSection(
-                    busStop: "281 Hamburg Lattenkamp",
+                    buses: [
+                      {'line': '281', 'destination': 'Hamburg Lattenkamp'},
+                    ],
                     time: "5 Minuten - 10:02",
                     onTap: () => onTap281HamburgULattenkamp(context),
                   ),
                   const CustomDivider(),
                   BusDepartureSection(
-                    busStop: "181 Jaarsmoor",
+                    buses: [
+                      {'line': '181', 'destination': 'Jaarsmoor'},
+                    ],
                     time: "8 Minuten - 10:05",
                     onTap: () => Void,
                   ),
                   const CustomDivider(),
                   BusDepartureSection(
-                    busStop: "281 S Krupunder",
+                    buses: [
+                      {'line': '281 S', 'destination': 'Krupunder'},
+                    ],
                     time: "12 Minuten - 10:09",
                     onTap: () => Void,
                   ),
@@ -68,10 +77,10 @@ class RadarScreen extends StatelessWidget {
               Semantics(
                 label:
                     "Automatische Erfassung der nächst gelegenen Bushaltestelle. Zur Zeit ermittelte Haltestelle:",
-                child: CustomNearestBusStop(
+                child: CustomDisplayBar(
                   text: "Informatikum", // Static text
                   imagePath: ImageConstant.imgOrtungsIcon,
-                  isEditable: false, // Static display for this case
+                  isEditable: false,
                 ),
               ),
               SizedBox(height: 4.h),
@@ -101,14 +110,14 @@ class RadarScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12.h),
                       borderSide: BorderSide(
                         color: theme.colorScheme.primary,
-                        width: 1,
+                        width: 3,
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.h),
                       borderSide: BorderSide(
                         color: theme.colorScheme.primary,
-                        width: 1,
+                        width: 3,
                       ),
                     ),
                     fillColor: appTheme.whiteA700.withOpacity(0.1),

@@ -1,6 +1,10 @@
+import 'dart:ffi';
 import 'package:flutter/material.dart';
 import '../core/app_export.dart';
+import '../widgets/common_widgets.dart';
+import '../widgets/custom_navigation_bar.dart';
 import '../widgets/custom_outlined_button.dart';
+import 'sprachansagen_screen.dart';
 
 class EinstellungenScreen extends StatelessWidget {
   const EinstellungenScreen({Key? key})
@@ -17,196 +21,81 @@ class EinstellungenScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Container(
               width: double.maxFinite,
-              padding: EdgeInsets.symmetric(vertical: 14.h),
+              padding: EdgeInsets.symmetric(vertical: 12.h),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    width: double.maxFinite,
-                    margin: EdgeInsets.symmetric(horizontal: 22.h),
-                    child: Column(
-                      children: [
-                        Text(
-                          "Einstellungen".toUpperCase(),
-                          style: CustomTextStyle.headlineLargeOrbitron,
+                  _buildEinstellungenColumn(context),
+                  SizedBox(height: 40.h),
+                  CustomOutlinedButton(
+                    text: "Sprachansagen",
+                    onTap: () {
+                      print("Navigating to SprachansagenScreen");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SprachansagenScreen(),
                         ),
-                        SizedBox(height: 28.h),
-                        SizedBox(
-                          width: double.maxFinite,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              _buildAudioAnnouncementsButton(context),
-                              SizedBox(height: 22.h),
-                              SizedBox(
-                                width: double.maxFinite,
-                                child: Divider(),
-                              ),
-                              SizedBox(height: 22.h),
-                              _buildVibrationFeedbackButton(context),
-                              SizedBox(height: 22.h),
-                              SizedBox(
-                                width: double.maxFinite,
-                                child: Divider(),
-                              ),
-                              SizedBox(height: 22.h),
-                              _buildFontSizeButton(context),
-                              SizedBox(height: 22.h),
-                              SizedBox(
-                                width: double.maxFinite,
-                                child: Divider(),
-                              ),
-                              SizedBox(height: 22.h),
-                              _buildColorSchemeButton(context),
-                              SizedBox(height: 22.h),
-                              SizedBox(
-                                width: double.maxFinite,
-                                child: Divider(),
-                              ),
-                              SizedBox(height: 22.h),
-                              _buildDisturbanceReportButton(context)
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
+                      );
+                    },
                   ),
-                  SizedBox(height: 128.h),
-                  SizedBox(
-                    width: double.maxFinite,
-                    child: Divider(),
+                  SizedBox(height: 16.h),
+                  const CustomDivider(),
+                  CustomOutlinedButton(
+                    text: "Vibrationsfeedback",
+                    onTap: () => Navigator.pushNamed(
+                        context, AppRoutes.vibrationsFeedbackScreen),
                   ),
-                  SizedBox(height: 12.h),
-                  _buildNavigationBar(context),
+                  SizedBox(height: 16.h),
+                  const CustomDivider(),
+                  CustomOutlinedButton(
+                    text: "Schriftgröße",
+                    onTap: () => Void,
+                  ),
+                  SizedBox(height: 16.h),
+                  const CustomDivider(),
+                  CustomOutlinedButton(
+                    text: "Farbschema",
+                    onTap: () => Navigator.pushNamed(
+                        context, AppRoutes.farbschemaScreen),
+                  ),
+                  SizedBox(height: 16.h),
+                  const CustomDivider(),
+                  CustomOutlinedButton(
+                    text: "Störungsmelder",
+                    onTap: () => Navigator.pushNamed(
+                        context, AppRoutes.stoerungsmelderScreen),
+                  ),
                 ],
               ),
             ),
           ),
         ),
+        bottomNavigationBar: const CustomNavigationBar(),
       ),
     );
   }
 
-  Widget _buildAudioAnnouncementsButton(BuildContext context) {
-    return CustomOutlinedButton(
-      width: 204.h,
-      text: "Sprachansagen",
-      onPressed: () {},
-    );
-  }
-
-  Widget _buildVibrationFeedbackButton(BuildContext context) {
-    return CustomOutlinedButton(
-      width: 234.h,
-      text: "Vibrationsfeedback",
-      onPressed: () {},
-    );
-  }
-
-  Widget _buildFontSizeButton(BuildContext context) {
-    return CustomOutlinedButton(
-      width: 158.h,
-      text: "Schriftgröße",
-    );
-  }
-
-  Widget _buildColorSchemeButton(BuildContext context) {
-    return CustomOutlinedButton(
-      width: 156.h,
-      text: "Farbschema",
-      onPressed: () {},
-    );
-  }
-
-  Widget _buildDisturbanceReportButton(BuildContext context) {
-    return CustomOutlinedButton(
-      width: 200.h,
-      text: "Störungsmelder",
-      onPressed: () {},
-    );
-  }
-
-  _buildNavigationBar(BuildContext context) {
-    return Container(
+  Widget _buildEinstellungenColumn(BuildContext context) {
+    return SizedBox(
       width: double.maxFinite,
-      margin: EdgeInsets.symmetric(horizontal: 6.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      child: Align(
+        alignment: Alignment.center,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.h),
+          child: Column(
             children: [
-              CustomImageView(
-                imagePath: ImageConstant.imgRadarKnopf,
-                height: 50.h,
-                width: 54.h,
-                margin: EdgeInsets.only(left: 2.h),
-              ),
               Text(
-                "Radar",
-                style: theme.textTheme.headlineSmall,
-              )
+                "Einstellung".toUpperCase(),
+                style:
+                    theme.textTheme.displaySmall, // Use the same style as Radar
+              ),
+              SizedBox(height: 16.h),
             ],
           ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Padding(
-              padding: EdgeInsets.only(left: 10.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  CustomImageView(
-                    imagePath: ImageConstant.imgZielOrtKnopf,
-                    height: 54.h,
-                    width: 54.h,
-                    margin: EdgeInsets.only(right: 10.h),
-                  ),
-                  Text(
-                    "Zielort",
-                    style: theme.textTheme.headlineSmall,
-                  )
-                ],
-              ),
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(left: 10.h),
-              child: Column(
-                children: [
-                  CustomImageView(
-                    imagePath: ImageConstant.imgEinstellungsKnopf,
-                    height: 52.h,
-                    width: 54.h,
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child:
-                        Text("Einstellung", style: theme.textTheme.titleLarge),
-                  )
-                ],
-              ),
-            ),
-          )
-        ],
+        ),
       ),
     );
-  }
-
-  onTapAudioAnnouncementsButton(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.sprachansagenScreen);
-  }
-
-  onTapVibrationFeedbackButton(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.vibrationsFeedbackScreen);
-  }
-
-  onTapColorSchemeButton(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.farbschemaScreen);
-  }
-
-  onTapDisturbanceReportButton(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.stoerungsmelderScreen);
   }
 }

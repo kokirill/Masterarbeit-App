@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import '../core/app_export.dart';
-import '../widgets/app_bar/apppbar_leading_image.dart';
-import '../widgets/app_bar/appbar_title.dart';
-import '../widgets/app_bar/custom_app_bar.dart';
+import '../widgets/app_bar_builder.dart';
+import '../widgets/custom_navigation_bar.dart';
 import '../widgets/custom_switch.dart';
 
 // ignore_for_file: must_be_immutable
-class FarbschemaScreen extends StatelessWidget {
+class FarbschemaScreen extends StatefulWidget {
   FarbschemaScreen({Key? key})
       : super(
           key: key,
         );
 
+  @override
+  _FarbschemaScreenState createState() => _FarbschemaScreenState();
+}
+
+class _FarbschemaScreenState extends State<FarbschemaScreen> {
   bool isSelectedSwitchWB = false;
 
   bool isSelctedSwitchBW = false;
@@ -22,201 +26,69 @@ class FarbschemaScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: _buildAppBar(context),
-        body: Container(
+        resizeToAvoidBottomInset: false,
+        appBar: const CustomAppBar(
+          titleText: 'Farbschema',
+        ),
+        body: SizedBox(
           width: double.maxFinite,
-          padding: EdgeInsets.symmetric(vertical: 16.h),
-          child: Column(
-            children: [
-              SizedBox(height: 28.h),
-              _buildColorSchemeWB(context),
-              SizedBox(height: 10.h),
-              _buildDivider(context),
-              SizedBox(height: 28.h),
-              _buildColorSchemeBW(context),
-              SizedBox(height: 14.h),
-              _buildDivider(context),
-              SizedBox(height: 28.h),
-              _buildColorSchemeBY(context),
-              Spacer(),
-              SizedBox(
-                width: double.maxFinite,
-                child: Divider(),
+          child: SingleChildScrollView(
+            child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(vertical: 10.h),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  _buildFunction(context),
+                ],
               ),
-              SizedBox(height: 12.h),
-              _buildNavigationBar(context)
-            ],
+            ),
           ),
         ),
+        bottomNavigationBar: const CustomNavigationBar(),
       ),
     );
   }
 
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return CustomAppBar(
-      leadingWidth: 35.h,
-      leading: ApppbarLeadingImage(
-        imagePath: ImageConstant.imgZurueckKnopf,
-        margin: EdgeInsets.only(
-          left: 11.h,
-          top: 16.h,
-          bottom: 16.h,
-        ),
-      ),
-      centerTitle: true,
-      title: AppbarTitle(
-        text: "Farbschema".toUpperCase(),
-      ),
-    );
-  }
-
-  Widget _buildDivider(BuildContext context) {
+  Widget _buildFunction(BuildContext context) {
     return Container(
       width: double.maxFinite,
       margin: EdgeInsets.symmetric(horizontal: 22.h),
       child: Column(
         children: [
-          SizedBox(
-            width: double.maxFinite,
-            child: Divider(),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _buildColorSchemeWB(BuildContext context) {
-    return Container(
-      width: double.maxFinite,
-      margin: EdgeInsets.symmetric(horizontal: 10.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "Weiß und Schwarz",
-            style: theme.textTheme.headlineLarge,
-          ),
-          SizedBox(width: 18.h),
           CustomSwitch(
+            label: "Weiß und Schwarz",
+            value: isSelectedSwitchWB,
+            onChanged: (value) {
+              setState(() {
+                isSelectedSwitchWB = value;
+              });
+            },
+          ),
+          SizedBox(height: 32.h),
+          Divider(),
+          SizedBox(height: 32.h),
+          CustomSwitch(
+            label: "Schwarz und Weiß",
+            value: isSelctedSwitchBW,
+            onChanged: (value) {
+              setState(() {
+                isSelctedSwitchBW = value;
+              });
+            },
+          ),
+          SizedBox(height: 32.h),
+          Divider(),
+          SizedBox(height: 32.h),
+          CustomSwitch(
+            label: "Schwarz und Gelb",
             value: isSelctedSwitchBY,
             onChanged: (value) {
-              isSelctedSwitchBY = value;
+              setState(() {
+                isSelctedSwitchBY = value;
+              });
             },
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _buildColorSchemeBW(BuildContext context) {
-    return Container(
-      width: double.maxFinite,
-      margin: EdgeInsets.symmetric(horizontal: 10.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "Schwarz und Weiß",
-            style: theme.textTheme.headlineLarge,
           ),
-          SizedBox(width: 18.h),
-          CustomSwitch(
-            value: isSelctedSwitchBY,
-            onChanged: (value) {
-              isSelctedSwitchBY = value;
-            },
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _buildColorSchemeBY(BuildContext context) {
-    return Container(
-      width: double.maxFinite,
-      margin: EdgeInsets.symmetric(horizontal: 10.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "Schwarz und Gelb",
-            style: theme.textTheme.headlineLarge,
-          ),
-          SizedBox(width: 18.h),
-          CustomSwitch(
-            value: isSelctedSwitchBY,
-            onChanged: (value) {
-              isSelctedSwitchBY = value;
-            },
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _buildNavigationBar(BuildContext context) {
-    return Container(
-      width: double.maxFinite,
-      margin: EdgeInsets.symmetric(horizontal: 6.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomImageView(
-                imagePath: ImageConstant.imgRadarKnopf,
-                height: 50.h,
-                width: 54.h,
-                margin: EdgeInsets.only(left: 2.h),
-              ),
-              Text(
-                "Radar",
-                style: theme.textTheme.headlineSmall,
-              )
-            ],
-          ),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Padding(
-              padding: EdgeInsets.only(left: 10.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  CustomImageView(
-                    imagePath: ImageConstant.imgZielOrtKnopf,
-                    height: 54.h,
-                    width: 54.h,
-                    margin: EdgeInsets.only(right: 10.h),
-                  ),
-                  Text(
-                    "Zielort",
-                    style: theme.textTheme.headlineSmall,
-                  )
-                ],
-              ),
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(left: 10.h),
-              child: Column(
-                children: [
-                  CustomImageView(
-                    imagePath: ImageConstant.imgEinstellungsKnopf,
-                    height: 52.h,
-                    width: 54.h,
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child:
-                        Text("Einstellung", style: theme.textTheme.titleLarge),
-                  )
-                ],
-              ),
-            ),
-          )
         ],
       ),
     );

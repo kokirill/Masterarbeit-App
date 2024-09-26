@@ -1,72 +1,44 @@
 import 'package:flutter/material.dart';
-import '../core/app_export.dart';
-import 'base_button.dart';
+import 'package:mobi_app_seheingeschraenkte_bus/core/app_export.dart';
 
-class CustomOutlinedButton extends BaseButton {
-  CustomOutlinedButton(
-      {Key? key,
-      this.decoration,
-      this.leftIcon,
-      this.rightIcon,
-      this.label,
-      VoidCallback? onPressed,
-      ButtonStyle? buttonStyle,
-      TextStyle? buttonTextStyle,
-      bool? isDisabled,
-      Alignment? alignment,
-      double? height,
-      double? width,
-      EdgeInsets? margin,
-      required String text})
-      : super(
-          text: text,
-          onPressed: onPressed,
-          buttonStyle: buttonStyle,
-          isDisabled: isDisabled,
-          buttonTextStyle: buttonTextStyle,
-          height: height,
-          alignment: alignment,
-          width: width,
-          margin: margin,
-        );
+class CustomOutlinedButton extends StatelessWidget {
+  final String text;
+  final VoidCallback? onTap;
 
-  final BoxDecoration? decoration;
-
-  final Widget? leftIcon;
-
-  final Widget? rightIcon;
-
-  final Widget? label;
+  const CustomOutlinedButton({
+    Key? key,
+    required this.text,
+    this.onTap,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return alignment != null
-        ? Align(
-            alignment: alignment ?? Alignment.center,
-            child: buildOutlinedButtonWidget)
-        : buildOutlinedButtonWidget;
-  }
-
-  Widget get buildOutlinedButtonWidget => Container(
-        height: this.height ?? 56.h,
-        width: this.width ?? double.maxFinite,
-        margin: margin,
-        decoration: decoration,
-        child: OutlinedButton(
-          style: buttonStyle,
-          onPressed: isDisabled ?? false ? null : onPressed ?? () {},
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              leftIcon ?? const SizedBox.shrink(),
-              Text(
-                text,
-                style: buttonTextStyle ?? theme.textTheme.headlineSmall,
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(left: 5.h),
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.h),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.h), // Rounded Borders
+                border: Border.all(
+                  color: Colors.black, // Border color
+                  width: 3.0, // Border width
+                ),
               ),
-              rightIcon ?? const SizedBox.shrink()
-            ],
+              child: Text(
+                text,
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineSmall, // Using the app's text theme
+              ),
+            ),
           ),
-        ),
-      );
+        ],
+      ),
+    );
+  }
 }

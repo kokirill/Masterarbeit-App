@@ -2,9 +2,9 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 import '../core/app_export.dart';
-import '../widgets/app_bar/app_bar_builder.dart';
-import '../widgets/common_widgets.dart';
+import '../widgets/app_bar_builder.dart';
 import '../widgets/custom_navigation_bar.dart';
+import '../widgets/common_widgets.dart';
 
 // ignore_for_file: must_be_immutable
 class BusAusgewaehltScreen extends StatelessWidget {
@@ -23,17 +23,22 @@ class BusAusgewaehltScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: _buildAppBar(context),
+        appBar: const CustomAppBar(
+          titleText: '281 Hamburg U Lattenkamp', // Pass your title
+        ),
         body: SizedBox(
           width: double.maxFinite,
           child: SingleChildScrollView(
             child: Container(
               width: double.infinity,
-              padding: EdgeInsets.symmetric(vertical: 10.h),
+              padding: EdgeInsets.symmetric(vertical: 16.h),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Header(text: "5 Haltestellen"),
+                  Semantics(
+                    label: "Dieser Bus fährt noch",
+                    child: const Header(text: "5 Haltestellen"),
+                  ),
                   SizedBox(height: 2.h),
                   _buildDisruptionInfo(),
                   SizedBox(height: 20.h),
@@ -49,13 +54,6 @@ class BusAusgewaehltScreen extends StatelessWidget {
         ),
         bottomNavigationBar: const CustomNavigationBar(),
       ),
-    );
-  }
-
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return buildAppBar(
-      context: context,
-      titleText: "281 Hamburg U Lattenkamp",
     );
   }
 
@@ -131,9 +129,9 @@ class BusAusgewaehltScreen extends StatelessWidget {
         children: [
           // Einstiegswunsch button
           GestureDetector(
-            onTap: () {}, // Empty onTap for now
+            onTap: () {},
             child: Semantics(
-              button: true, // Mark as button for TalkBack
+              button: true,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 4.h, vertical: 24.h),
                 decoration: AppDecoration.outlinePrimary.copyWith(
@@ -156,9 +154,9 @@ class BusAusgewaehltScreen extends StatelessWidget {
           // Ausstiegswunsch button
           Expanded(
             child: GestureDetector(
-              onTap: () {}, // Empty onTap for now
+              onTap: () {},
               child: Semantics(
-                button: true, // Mark as button for TalkBack
+                button: true,
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 24.h),
                   decoration: AppDecoration.outlinePrimary.copyWith(

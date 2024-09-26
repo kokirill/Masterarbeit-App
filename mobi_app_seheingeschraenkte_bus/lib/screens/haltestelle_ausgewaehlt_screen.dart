@@ -2,9 +2,11 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 import '../core/app_export.dart';
-import '../widgets/app_bar/app_bar_builder.dart';
+import '../widgets/app_bar_builder.dart';
+import '../widgets/bus_departure_section.dart';
 import '../widgets/custom_navigation_bar.dart';
 import '../widgets/common_widgets.dart';
+import 'zielort_screen.dart';
 
 // ignore_for_file: must_be_immutable
 class HaltestelleAusgewaehltScreen extends StatelessWidget {
@@ -15,7 +17,9 @@ class HaltestelleAusgewaehltScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: _buildAppBar(context),
+        appBar: const CustomAppBar(
+          titleText: 'Schillingsbekweg',
+        ),
         body: SizedBox(
           width: double.maxFinite,
           child: SingleChildScrollView(
@@ -28,13 +32,17 @@ class HaltestelleAusgewaehltScreen extends StatelessWidget {
                   const Header(text: "Abfahrten"),
                   SizedBox(height: 20.h),
                   BusDepartureSection(
-                    busStop: "392 Hamburg U S Ohlsdorf",
+                    buses: [
+                      {'line': '392', 'destination': 'Hamburg U S Ohlsdorf'},
+                    ],
                     time: "10 Minuten - 11:02",
                     onTap: () => Void,
                   ),
                   const CustomDivider(),
                   BusDepartureSection(
-                    busStop: "22 Hamburg U Kelling",
+                    buses: [
+                      {'line': '22', 'destination': 'Hamburg U Kelling'},
+                    ],
                     time: "12 Minuten - 11:04",
                     onTap: () => Void,
                   ),
@@ -43,15 +51,12 @@ class HaltestelleAusgewaehltScreen extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: const CustomNavigationBar(),
+        bottomNavigationBar: CustomNavigationBar(
+          onZielortPressed: () {
+            Navigator.pushNamed(context, AppRoutes.zielortScreen);
+          },
+        ),
       ),
-    );
-  }
-
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return buildAppBar(
-      context: context,
-      titleText: "Schillingsbekweg",
     );
   }
 

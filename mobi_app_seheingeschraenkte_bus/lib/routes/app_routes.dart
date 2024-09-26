@@ -51,6 +51,6 @@ class AppRoutes {
     farbschemaScreen: (context) => FarbschemaScreen(),
     stoerungsmelderScreen: (context) => StoerungsmelderScreen(),
     appNavigationScreen: (context) => AppNavigationScreen(),
-    intialRoute: (context) => BusAusgewaehltScreen(),
+    intialRoute: (context) => RadarScreen(),
   };
 }

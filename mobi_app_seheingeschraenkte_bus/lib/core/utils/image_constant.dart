@@ -6,8 +6,6 @@ class ImageConstant {
   //Common images
   static String imgOrtungsIcon = '$imagePath/img_ortungs_icon.png';
 
-  //static String imgRewind = '$imagePath/img_rewind.svg';
-
   static String imgBus = '$imagePath/img_bus.png';
 
   static String imgRadarKnopf = '$imagePath/img_radar_knopf.png';
@@ -16,7 +14,7 @@ class ImageConstant {
 
   static String imgEinstellungsKnopf = '$imagePath/img_einstellungs_knopf.png';
 
-  static String imgZurueckKnopf = '$imagePath/img_zurueck_knopf.png';
-
   static String imgAufklappKnopf = '$imagePath/img_aufklapp_knopf.png';
+
+  static String imgSuchIcon = '$imagePath/img_such_icon.png';
 }
