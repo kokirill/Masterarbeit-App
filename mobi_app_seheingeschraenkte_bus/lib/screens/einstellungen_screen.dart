@@ -6,11 +6,26 @@ import '../widgets/custom_navigation_bar.dart';
 import '../widgets/custom_outlined_button.dart';
 import 'sprachansagen_screen.dart';
 
-class EinstellungenScreen extends StatelessWidget {
-  const EinstellungenScreen({Key? key})
-      : super(
-          key: key,
-        );
+class EinstellungenScreen extends StatefulWidget {
+  const EinstellungenScreen({Key? key}) : super(key: key);
+
+  @override
+  _EinstellungenScreenState createState() => _EinstellungenScreenState();
+}
+
+class _EinstellungenScreenState extends State<EinstellungenScreen> {
+  final FocusNode _titleFocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    // Request focus on the title after the screen is built
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(Duration(milliseconds: 300), () {
+        _titleFocusNode.requestFocus();
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,24 +44,11 @@ class EinstellungenScreen extends StatelessWidget {
                   _buildEinstellungenColumn(context),
                   SizedBox(height: 40.h),
                   CustomOutlinedButton(
-                    text: "Sprachansagen",
-                    onTap: () {
-                      print("Navigating to SprachansagenScreen");
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SprachansagenScreen(),
-                        ),
-                      );
-                    },
-                  ),
+                      text: "Sprachansagen", onTap: () => Void),
                   SizedBox(height: 16.h),
                   const CustomDivider(),
                   CustomOutlinedButton(
-                    text: "Vibrationsfeedback",
-                    onTap: () => Navigator.pushNamed(
-                        context, AppRoutes.vibrationsFeedbackScreen),
-                  ),
+                      text: "Vibrationsfeedback", onTap: () => Void),
                   SizedBox(height: 16.h),
                   const CustomDivider(),
                   CustomOutlinedButton(
@@ -55,18 +57,11 @@ class EinstellungenScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 16.h),
                   const CustomDivider(),
-                  CustomOutlinedButton(
-                    text: "Farbschema",
-                    onTap: () => Navigator.pushNamed(
-                        context, AppRoutes.farbschemaScreen),
-                  ),
+                  CustomOutlinedButton(text: "Farbschema", onTap: () => Void),
                   SizedBox(height: 16.h),
                   const CustomDivider(),
                   CustomOutlinedButton(
-                    text: "Störungsmelder",
-                    onTap: () => Navigator.pushNamed(
-                        context, AppRoutes.stoerungsmelderScreen),
-                  ),
+                      text: "Störungsmelder", onTap: () => Void),
                 ],
               ),
             ),
@@ -86,10 +81,15 @@ class EinstellungenScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.h),
           child: Column(
             children: [
-              Text(
-                "Einstellung".toUpperCase(),
-                style:
-                    theme.textTheme.displaySmall, // Use the same style as Radar
+              Semantics(
+                label: "Einstellung Titel",
+                child: Focus(
+                  focusNode: _titleFocusNode,
+                  child: Text(
+                    "Einstellung".toUpperCase(),
+                    style: Theme.of(context).textTheme.displaySmall,
+                  ),
+                ),
               ),
               SizedBox(height: 16.h),
             ],

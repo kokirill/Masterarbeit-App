@@ -20,7 +20,9 @@ class _ZielortScreenState extends State<ZielortScreen> {
     super.initState();
     // Request focus on the title after the screen is built
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _titleFocusNode.requestFocus();
+      Future.delayed(Duration(milliseconds: 300), () {
+        _titleFocusNode.requestFocus();
+      });
     });
   }
 
@@ -81,10 +83,10 @@ class _ZielortScreenState extends State<ZielortScreen> {
               Semantics(
                 label: "Zielort Titel",
                 child: Focus(
-                  focusNode: _titleFocusNode, // Assign FocusNode to title
+                  focusNode: _titleFocusNode,
                   child: Text(
                     "Zielort".toUpperCase(),
-                    style: theme.textTheme.displaySmall,
+                    style: Theme.of(context).textTheme.displaySmall,
                   ),
                 ),
               ),

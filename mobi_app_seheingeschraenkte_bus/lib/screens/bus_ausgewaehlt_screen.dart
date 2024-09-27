@@ -24,7 +24,7 @@ class BusAusgewaehltScreen extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: const CustomAppBar(
-          titleText: '281 Hamburg U Lattenkamp', // Pass your title
+          titleText: '281 S Krupunder', // Pass your title
         ),
         body: SizedBox(
           width: double.maxFinite,
