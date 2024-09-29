@@ -46,6 +46,7 @@ class HaltestelleAusgewaehltScreen extends StatelessWidget {
                     time: "12 Minuten - 11:04",
                     onTap: () => Void,
                   ),
+                  const CustomDivider(),
                   BusDepartureSection(
                     buses: [
                       {'line': '281', 'destination': 'U Kellinghusenstraße'},
@@ -53,6 +54,7 @@ class HaltestelleAusgewaehltScreen extends StatelessWidget {
                     time: "15 Minuten - 11:07",
                     onTap: () => Void,
                   ),
+                  const CustomDivider(),
                   BusDepartureSection(
                     buses: [
                       {'line': '391', 'destination': 'U Niendorf Markt'},
@@ -60,6 +62,7 @@ class HaltestelleAusgewaehltScreen extends StatelessWidget {
                     time: "18 Minuten - 11:10",
                     onTap: () => Void,
                   ),
+                  const CustomDivider(),
                 ],
               ),
             ),
