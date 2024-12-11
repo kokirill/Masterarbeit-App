@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobi_app_seheingeschraenkte_bus/core/app_export.dart';
 
-/// Reusable widget that can either display a static bus stop name or act as a text input field
 class CustomDisplayBar extends StatelessWidget {
   final String text;
   final String imagePath;
@@ -12,8 +11,8 @@ class CustomDisplayBar extends StatelessWidget {
     Key? key,
     required this.text,
     required this.imagePath,
-    this.isEditable = false, // By default, it is a static text display
-    this.controller, // If editable, a controller is required
+    this.isEditable = false,
+    this.controller,
   }) : super(key: key);
 
   @override
@@ -23,8 +22,8 @@ class CustomDisplayBar extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.h),
         border: Border.all(
-          color: Colors.black, // Border color
-          width: 3.0, // Border width
+          color: Colors.black,
+          width: 3.0,
         ),
       ),
       child: Row(
@@ -44,7 +43,7 @@ class CustomDisplayBar extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: text,
                       hintStyle: theme.textTheme.titleMedium,
-                      border: InputBorder.none, // No border inside the field
+                      border: InputBorder.none,
                     ),
                     autofocus: false,
                   )

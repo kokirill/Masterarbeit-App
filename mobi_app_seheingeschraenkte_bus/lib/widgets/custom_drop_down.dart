@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
-import 'package:flutter/services.dart'; // For SemanticsService
+import 'package:flutter/services.dart';
 
 class CustomDropdown extends StatefulWidget {
   final List<String> dropdownItemList;

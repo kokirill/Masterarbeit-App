@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// Diese werden im Code als Referenz verwendet, um die Benutzeroberfläche flexibel zu gestalten
+// used as reference in code
 const num DESIG_WIDTH = 375;
 const num DESIGN_HEIGHT = 812;
 const num DESIGN_STATUS_BAR = 0;
@@ -29,7 +29,7 @@ typedef ResponsiveBuild = Widget Function(
 class Sizer extends StatelessWidget {
   const Sizer({Key? key, required this.builder}) : super(key: key);
 
-  // Erstellt das Widget, wenn sich die Ausrichtung ändert
+  // builds widget if orientation changes
   final ResponsiveBuild builder;
 
   @override
@@ -45,19 +45,14 @@ class Sizer extends StatelessWidget {
 
 // ignore_for_file: must_be_immutable
 class SizeUtils {
-  // BoxConstraints vom Gerät
   static late BoxConstraints boxConstraints;
 
-  // Orientierung vom Gerät
   static late Orientation orienation;
 
-  // Art des Gerätes
   static late DeviceType deviceType;
 
-  // Höhe des Geräts
   static late double height;
 
-  // Breite des Geräts
   static late double width;
 
   static void setScreenSize(

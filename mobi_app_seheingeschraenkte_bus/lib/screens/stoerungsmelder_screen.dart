@@ -80,7 +80,7 @@ class _StoerungsmelderScreenState extends State<StoerungsmelderScreen> {
     return GestureDetector(
       onTap: () {},
       child: FractionallySizedBox(
-        widthFactor: 0.9, // Use 80% of the parent's width
+        widthFactor: 0.9,
         child: Container(
           decoration: BoxDecoration(
             color: Colors.white,

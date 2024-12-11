@@ -5,31 +5,28 @@ String _appTheme = "lightCode";
 LightCodeColors get appTheme => ThemeHelper().themeColor();
 ThemeData get theme => ThemeHelper().themeData();
 
-// Helper class für Farbschemas und Farben
+// Helper class for color schemes
 
 // ignore_for_file: must_be_immutable
 class ThemeHelper {
-  // Eine Map für benutzerdefinierte Farbschemas
   Map<String, LightCodeColors> _supportedCustomColor = {
     'lightCode': LightCodeColors()
   };
 
-  // Eine Map für Farbschemas
   Map<String, ColorScheme> _supportedColorScheme = {
     'lightCode': ColorSchemes.lightCodeColorScheme
   };
 
-  // Ändert das Farbschema der App
   void changeTheme(String _newTheme) {
     _appTheme = _newTheme;
   }
 
-  // gibt den lightCode für das derzeitige Farbschema zurück
+  // returns current themecolor
   LightCodeColors _getThemeColors() {
     return _supportedCustomColor[_appTheme] ?? LightCodeColors();
   }
 
-  // Gibt das die derzeitige ThemeData zurück
+  // returns current theme data
   ThemeData _getThemeData() {
     var colorScheme =
         _supportedColorScheme[_appTheme] ?? ColorSchemes.lightCodeColorScheme;
@@ -63,10 +60,8 @@ class ThemeHelper {
     );
   }
 
-  // gibt die Lichtcode-Farben für das aktuelle Farbschema zurück
   LightCodeColors themeColor() => _getThemeColors();
 
-  // gibt die aktuellen Theme daten zurück
   ThemeData themeData() => _getThemeData();
 }
 
@@ -111,7 +106,6 @@ class TextThemes {
       );
 }
 
-// Eine Klasse mit den Farbschemas
 class ColorSchemes {
   static final lightCodeColorScheme = ColorScheme.light(
     primary: Color(0XFF000000),
@@ -120,7 +114,7 @@ class ColorSchemes {
   );
 }
 
-// Klasse mit den benutzerdefinierten Farben für lightCode
+// Class with user defined Colors for lightCode
 class LightCodeColors {
   // schwarz
   Color get black900 => Color(0XFF010101);

@@ -78,7 +78,7 @@ class RadarScreen extends StatelessWidget {
                 label:
                     "Automatische Erfassung der nächst gelegenen Bushaltestelle. Zur Zeit ermittelte Haltestelle:",
                 child: CustomDisplayBar(
-                  text: "Informatikum", // Static text
+                  text: "Informatikum",
                   imagePath: ImageConstant.imgOrtungsIcon,
                   isEditable: false,
                 ),

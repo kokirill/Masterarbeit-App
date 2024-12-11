@@ -23,7 +23,6 @@ class _SprachansagenScreenState extends State<SprachansagenScreen> {
     "bei Ankunft"
   ];
 
-  // Track the selected value
   String selectedDropdownValue = "3 Minuten vor Ankunft";
 
   @override

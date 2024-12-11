@@ -23,17 +23,15 @@ class CustomOutlinedButton extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.h),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.h), // Rounded Borders
+                borderRadius: BorderRadius.circular(8.h),
                 border: Border.all(
-                  color: Colors.black, // Border color
-                  width: 3.0, // Border width
+                  color: Colors.black,
+                  width: 3.0,
                 ),
               ),
               child: Text(
                 text,
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineSmall, // Using the app's text theme
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
             ),
           ),

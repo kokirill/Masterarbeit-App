@@ -7,7 +7,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     Key? key,
     required this.titleText,
-    this.hasBackArrow = true, // Show back arrow by default
+    this.hasBackArrow = true,
   }) : super(key: key);
 
   @override

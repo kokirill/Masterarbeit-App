@@ -15,18 +15,14 @@ extension on TextStyle {
   }
 }
 
-// Eine Sammlung von vordefinierten Textstilen für die Gestaltung von Texten,
-// kategorisiert nach verschiedenen Schriftfamilien und Schriftschnitten
-// Darüber hinaus enthält dies Erweiterungen für TextStyle,
-// um bestimmte Schriftfamilien einfach auf Text anzuwenden
+// collection of predifined text styles
 
 class CustomTextStyle {
-  // Zeigt Textstil an
   static get displaySmallExo => theme.textTheme.displaySmall!.exo.copyWith(
         fontWeight: FontWeight.w500,
       );
 
-  // Kopfzeile
+  // header
   static get headlineLargeOrbitron =>
       theme.textTheme.headlineLarge!.orbitron.copyWith(
         fontWeight: FontWeight.w800,
@@ -48,7 +44,7 @@ class CustomTextStyle {
         color: appTheme.black900,
       );
 
-  // anderer Text
+  // other text
   static get titleLarge22 => theme.textTheme.titleLarge!.copyWith(
         fontSize: 22.fSize,
       );

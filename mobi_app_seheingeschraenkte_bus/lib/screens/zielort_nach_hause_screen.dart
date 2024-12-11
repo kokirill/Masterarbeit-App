@@ -80,7 +80,7 @@ class ZielortNachHauseScreen extends StatelessWidget {
                 label:
                     "Automatische Erfassung der Position. Zur Zeit ermittelte Position:",
                 child: CustomDisplayBar(
-                  text: "Vogt-Kölln-Straße 30", // Static text
+                  text: "Vogt-Kölln-Straße 30",
                   imagePath: ImageConstant.imgOrtungsIcon,
                   isEditable: false,
                 ),
@@ -89,7 +89,7 @@ class ZielortNachHauseScreen extends StatelessWidget {
               Semantics(
                 label: "Ausgewählter Zielort:",
                 child: CustomDisplayBar(
-                  text: "Nach Hause", // Static text
+                  text: "Nach Hause",
                   imagePath: ImageConstant.imgSuchIcon,
                   isEditable: false,
                 ),

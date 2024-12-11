@@ -10,7 +10,7 @@ import '../widgets/common_widgets.dart';
 class BusAusgewaehltScreen extends StatelessWidget {
   BusAusgewaehltScreen({Key? key}) : super(key: key);
 
-  // Define all schedule times
+  // all schedule times
   final List<Map<String, String>> scheduleTimes = [
     {"time": "10:56", "stop": "Informatikum"},
     {"time": "10:58", "stop": "Deelwisch"},
@@ -24,7 +24,7 @@ class BusAusgewaehltScreen extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: const CustomAppBar(
-          titleText: '281 S Krupunder', // Pass your title
+          titleText: '281 S Krupunder',
         ),
         body: SizedBox(
           width: double.maxFinite,
